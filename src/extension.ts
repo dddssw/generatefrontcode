@@ -4,18 +4,20 @@ import * as vscode from "vscode";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-function getWebviewContent() {
-  // 返回视图的 HTML 内容
-  return `
-        <h1>Package Explorer</h1>
-        <p>Dependencies:</p>
-        <ul>
-            <li>In order to use git features, you can open a folder containing a git repository or clone from a URL.</li>
-            <li><a href="command:vscode.openFolder">Open Folder</a></li>
-            <li><a href="command:git.clone">Clone Repository</a></li>
-        </ul>
-        <p>To learn more about how to use git and source control in VS Code <a href="https://aka.ms/vscode-scm">read our docs</a>.</p>
-    `;
+function getWebviewContent(srcUri: string) {
+  return `<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webview-react</title>
+    <script defer="defer" src="${srcUri}"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  </html>`;
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -61,6 +63,9 @@ export function activate(context: vscode.ExtensionContext) {
       </body>
       </html>
       `;
+      webviewView.webview.options = {
+        enableScripts: true,
+      };
     }
   }
   vscode.window.registerWebviewViewProvider(

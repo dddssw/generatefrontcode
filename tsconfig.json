@@ -1,11 +1,18 @@
 {
 	"compilerOptions": {
+		"jsx": "react",
 		"module": "Node16",
 		"target": "ES2022",
 		"outDir": "out",
 		"lib": [
-			"ES2022"
+			"ES2022","dom"
 		],
+	 "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/webview/*"]
+    },
+	  "noEmit": true,
+	"allowImportingTsExtensions":true,
 		"sourceMap": true,
 		"rootDir": "src",
 		"strict": true   /* enable all strict type-checking options */
