@@ -34,9 +34,8 @@
     "views": {
       "package-explorer": [
         {
-          "id": "package-dependencies",
-          "name": "Dependencies",
-          "type": "webview"
+          "id": "nodeDependencies",
+          "name": "Node Dependencies"
         }
       ]
     }
